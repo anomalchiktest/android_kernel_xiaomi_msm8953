@@ -1,4 +1,5 @@
 /* Copyright (c) 2007-2016, The Linux Foundation. All rights reserved.
+ * Copyright (C) 2017 XiaoMi, Inc.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -174,6 +175,7 @@ static int mdss_smmu_attach_v2(struct mdss_data_type *mdata)
 	struct mdss_smmu_client *mdss_smmu;
 	int i, rc = 0;
 
+	mutex_lock(&mdp_iommu_lock);
 	for (i = 0; i < MDSS_IOMMU_MAX_DOMAIN; i++) {
 		if (!mdss_smmu_is_valid_domain_type(mdata, i))
 			continue;
@@ -205,9 +207,11 @@ static int mdss_smmu_attach_v2(struct mdss_data_type *mdata)
 			}
 		} else {
 			pr_err("iommu device not attached for domain[%d]\n", i);
+			mutex_unlock(&mdp_iommu_lock);
 			return -ENODEV;
 		}
 	}
+	mutex_unlock(&mdp_iommu_lock);
 
 	return 0;
 
