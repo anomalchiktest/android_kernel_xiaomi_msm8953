@@ -3703,27 +3703,6 @@ static void dwc3_check_float_lines(struct dwc3_msm *mdwc)
 	}
 }
 
-static void dwc3_check_float_lines(struct dwc3_msm *mdwc)
-{
-	int dpdm;
-
-	dev_dbg(mdwc->dev, "%s: Check linestate\n", __func__);
-	dwc3_msm_gadget_vbus_draw(mdwc, 0);
-
-	/* Get linestate with Idp_src enabled */
-	dpdm = usb_phy_dpdm_with_idp_src(mdwc->hs_phy);
-	if (dpdm == 0x2) {
-		/* DP is HIGH = lines are floating */
-		mdwc->chg_type = DWC3_PROPRIETARY_CHARGER;
-		mdwc->otg_state = OTG_STATE_B_IDLE;
-		pm_runtime_put_sync(mdwc->dev);
-		dbg_event(0xFF, "FLT psync",
-				atomic_read(&mdwc->dev->power.usage_count));
-	} else if (dpdm) {
-		dev_dbg(mdwc->dev, "%s:invalid linestate:%x\n", __func__, dpdm);
-	}
-}
-
 static void dwc3_initialize(struct dwc3_msm *mdwc)
 {
 	u32 tmp;

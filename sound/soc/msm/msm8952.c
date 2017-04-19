@@ -3353,7 +3353,7 @@ err:
 		}
 	}
 err1:
-	snd_soc_card_set_drvdata(card, NULL)
+	snd_soc_card_set_drvdata(card, NULL);
 	devm_kfree(&pdev->dev, pdata);
 	return ret;
 }

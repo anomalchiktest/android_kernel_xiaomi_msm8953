@@ -36,7 +36,6 @@
 			compatible = "removed-dma-pool";
 			no-map;
 			reg = <0x0 0x84A00000 0x0 0x1E00000>;
-			
 		};
 
 		modem_mem: modem_region@0 {

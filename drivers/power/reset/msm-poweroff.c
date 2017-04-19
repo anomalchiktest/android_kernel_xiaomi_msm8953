@@ -63,7 +63,7 @@ static void scm_disable_sdi(void);
 */
 static int download_mode = 1;
 #else
-static const int download_mode;
+static int download_mode;
 #endif
 
 #ifdef CONFIG_MSM_DLOAD_MODE

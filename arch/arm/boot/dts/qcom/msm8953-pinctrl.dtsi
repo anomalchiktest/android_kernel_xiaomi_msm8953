@@ -682,7 +682,8 @@
 					bias-disable;
 					output-low;
 				};		
-
+			};
+		};
 		sdc2_cd_on: cd_on {
 			mux {
 				pins = "gpio133";
