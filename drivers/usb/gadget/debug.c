@@ -18,7 +18,7 @@
 #include <linux/rwlock.h>
 #include <linux/debugfs.h>
 
-#include "debug.h"
+#include <linux/usb/gadget/debug.h>
 
 #define dbg_inc(i) ((i+1) % DBG_MAX_MSG)
 

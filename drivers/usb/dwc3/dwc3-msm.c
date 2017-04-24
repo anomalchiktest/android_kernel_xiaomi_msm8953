@@ -3838,6 +3838,7 @@ static void dwc3_msm_otg_sm_work(struct work_struct *w)
 					atomic_read(
 					&mdwc->dev->power.usage_count));
 				break;
+			}
 			default:
 				WARN_ON(1);
 				break;

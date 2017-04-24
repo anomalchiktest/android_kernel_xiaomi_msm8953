@@ -184,9 +184,8 @@ static int vkeys_probe(struct platform_device *pdev)
 				"virtualkeys.%s", pdata->name);
 	vkey_obj_attr.attr.name = name;
 
-
 	if (!vkey_obj) {
-	   vkey_obj = kobject_create_and_add("board_properties", NULL);
+		vkey_obj = kobject_create_and_add("board_properties", NULL);
 	}
 
 	ret = sysfs_create_group(vkey_obj, &vkey_grp);

@@ -5,7 +5,7 @@
 #include <linux/nls.h>
 #include <linux/usb/composite.h>
 #include <linux/usb/gadget_configfs.h>
-#include "configfs.h"
+#include <linux/usb/gadget/configfs.h>
 #include "u_f.h"
 #include "u_os_desc.h"
 
